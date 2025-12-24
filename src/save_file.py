@@ -6,10 +6,10 @@ class SaveFile:
     
     #### Save file specific values ####
 
-    def get_savefile_value(self, target, size, order='big'):
+    def get_savefile_value(self, target, size, order='little'):
         return int.from_bytes(self.data[target:target + size], order)
 
-    def set_savefile_value(self, target, value, size, order='big'):
+    def set_savefile_value(self, target, value, size, order='little'):
         bytes_to_set = value.to_bytes(size, order)
         place = 0
         for b in bytes_to_set:
@@ -19,11 +19,11 @@ class SaveFile:
 
     #### Character specific values ####
 
-    def get_character_value(self, character, offset, size, order='big'):
+    def get_character_value(self, character, offset, size, order='little'):
         target = character + offset
         return int.from_bytes(self.data[target:target + size], order)
 
-    def set_character_value(self, character, offset, value, size, order='big'):
+    def set_character_value(self, character, offset, value, size, order='little'):
         bytes_to_set = value.to_bytes(size, order)
         target = character + offset
         place = 0

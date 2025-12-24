@@ -34,6 +34,9 @@ class Lineup(Enum):
 # Order: Big-endian unless otherwise stated
 class Offsets(Enum):
     LEVEL = 0x03
+    TOTAL_XP = 0x34 # 4 Bytes Little-endian
+    NEXT_XP = 0x8   # 2 Bytes Little-endian
+
     # MAX_HP        # 2 bytes Little-endian
     # HP            # 2 bytes Little-endian
 
@@ -52,9 +55,6 @@ class Offsets(Enum):
     # WPN_1_LVL
     # WPN_2_LVL
     # WPN_3_LVL
-
-    # TOTAL_XP      # 4 Bytes Little-endian
-    # NEXT_XP       # 2 Bytes Little-endian
 
     # FIRE_MAGIC_XP     # 2 Bytes Little-endian
     # WATER_MAGIC_XP    # 2 Bytes Little-endian

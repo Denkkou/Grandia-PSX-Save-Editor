@@ -6,25 +6,30 @@ class SaveFile:
     
     #### Save file specific values ####
 
-    def get_money(self):
-        return int.from_bytes(self.data[MONEY:MONEY+4], byteorder = 'little')
-    
-    def set_money(self, value):
-        bytes = value.to_bytes(4, byteorder = 'little')
-        place = 0
-        for b in bytes:
-            self.data[MONEY + place] = b
-            place += 1
+    def get_savefile_value(self, target, size, order='big'):
+        return int.from_bytes(self.data[target:target + size], order)
 
+    def set_savefile_value(self, target, value, size, order='big'):
+        bytes_to_set = value.to_bytes(size, order)
+        place = 0
+        for b in bytes_to_set:
+            self.data[target + place] = b
+            place += 1   
 
 
     #### Character specific values ####
 
-    def get_level(self, character): 
-        return self.data[character.value + Offsets.LEVEL.value]
-    
-    def set_level(self, character, value):
-        self.data[character.value + Offsets.LEVEL.value] = value
+    def get_character_value(self, character, offset, size, order='big'):
+        target = character + offset
+        return int.from_bytes(self.data[target:target + size], order)
+
+    def set_character_value(self, character, offset, value, size, order='big'):
+        bytes_to_set = value.to_bytes(size, order)
+        target = character + offset
+        place = 0
+        for b in bytes_to_set:
+            self.data[target + place] = b
+            place += 1
 
 
 

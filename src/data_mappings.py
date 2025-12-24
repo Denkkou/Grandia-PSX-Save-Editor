@@ -3,88 +3,86 @@ from enum import Enum
 # Characters and their location within the save file
 # Get location through Character.JUSTIN.value
 class Character(Enum):
-    JUSTIN = 0x310  #01
-    FEENA = 0x390   #02
-    SUE = 0x410     #03
-    GADWIN = 0x490  #04
-    RAPP = 0x510    #05
-    #6 = 0x590      #06
-    #7 = 0x610      #07
-    LIETE = 0x690   #08
+    JUSTIN  = 0x310 #01
+    FEENA   = 0x390 #02
+    SUE     = 0x410 #03
+    GADWIN  = 0x490 #04
+    RAPP    = 0x510 #05
+    #6      = 0x590 #06
+    #7      = 0x610 #07
+    LIETE   = 0x690 #08
 
 # Character overworld groups are hard-coded combinations
 class Lineup(Enum):
-    JS = 0x1
-    JSF = 0x2
-    JF = 0x3
-    JSFR = 0x4
-    JSFG = 0x5
-    JL = 0x6
-    JFG = 0x8
-    JFR = 0x9
-    JFRM = 0xA
-    JFRG = 0xC
-    JRG = 0xE
-    JFRL = 0xF
-    JRL = 0x10
+    JS      = 0x1
+    JSF     = 0x2
+    JF      = 0x3
+    JSFR    = 0x4
+    JSFG    = 0x5
+    JL      = 0x6
+    JFG     = 0x8
+    JFR     = 0x9
+    JFRM    = 0xA
+    JFRG    = 0xC
+    JRG     = 0xE
+    JFRL    = 0xF
+    JRL     = 0x10
 
-# RELATIVE offsets from character location start
-# Usage: CHARACTER + OFFSET = character's value
-# Size: 1 byte unless otherwise stated
-# Order: Big-endian unless otherwise stated
+# Relative offsets from start of character's data block
 class Offsets(Enum):
-    LEVEL = 0x03
-    TOTAL_XP = 0x34 # 4 Bytes Little-endian
-    NEXT_XP = 0x8   # 2 Bytes Little-endian
+    LEVEL       = 0x03  # 1 Byte
+    TOTAL_XP    = 0x34  # 4 Bytes Little-endian
+    NEXT_XP     = 0x08  # 2 Bytes Little-endian
 
-    # MAX_HP        # 2 bytes Little-endian
-    # HP            # 2 bytes Little-endian
+    MAX_HP      = 0x0A  # 2 bytes Little-endian
+    HP          = 0x0C  # 2 bytes Little-endian
 
-    # STR           # 2 bytes
-    # VIT           # 2 bytes
-    # WIT           # 2 bytes
-    # AGI           # 2 bytes
+    STR         = 0x0E  # 2 bytes
+    VIT         = 0x10  # 2 bytes
+    WIT         = 0x12  # 2 bytes
+    AGI         = 0x14  # 2 bytes
 
-    # MAX_SP        # 2 Bytes Little-endian
-    # SP            # 2 Bytes Little-endian
+    MAX_SP      = 0x16  # 2 Bytes Little-endian
+    SP          = 0x18  # 2 Bytes Little-endian
 
-    # WPN_1_XP      # 2 Bytes Little-endian
-    # WPN_2_XP      # 2 Bytes Little-endian
-    # WPN_3_XP      # 2 Bytes Little-endian
+    WPN_1_XP    = 0x24  # 2 Bytes Little-endian
+    WPN_2_XP    = 0x26  # 2 Bytes Little-endian
+    WPN_3_XP    = 0x28  # 2 Bytes Little-endian
 
-    # WPN_1_LVL
-    # WPN_2_LVL
-    # WPN_3_LVL
+    WPN_1_LVL   = 0x30  # 1 Byte
+    WPN_2_LVL   = 0x31  # 1 Byte
+    WPN_3_LVL   = 0x32  # 1 Byte
 
-    # FIRE_MAGIC_XP     # 2 Bytes Little-endian
-    # WATER_MAGIC_XP    # 2 Bytes Little-endian
-    # WIND_MAGIC_XP     # 2 Bytes Little-endian
-    # EARTH_MAGIC_XP    # 2 Bytes Little-endian
+    FIRE_XP     = 0x1C  # 2 Bytes Little-endian
+    WATER_XP    = 0x1E  # 2 Bytes Little-endian
+    WIND_XP     = 0x20  # 2 Bytes Little-endian
+    EARTH_XP    = 0x22  # 2 Bytes Little-endian
 
-    # FIRE_MAGIC_LVL
-    # WATER_MAGIC_LVL
-    # WIND_MAGIC_LVL
-    # EARTH_MAGIC_LVL
+    FIRE_LVL    = 0x2C  # 1 Byte
+    WATER_LVL   = 0x2D  # 1 Byte
+    WIND_LVL    = 0x2E  # 1 Byte
+    EARTH_LVL   = 0x2F  # 1 Byte
 
-    # EQUIP_WEAPON
-    # EQUIP_SHIELD
-    # EQUIP_ARMOUR
-    # EQUIP_HELMET
-    # EQUIP_SHOES
-    # EQUIP_JEWELRY
+    # EQUIP_WEAPON # 2 Bytes Little-endian
+    # EQUIP_SHIELD # 2 Bytes Little-endian
+    # EQUIP_ARMOUR # 2 Bytes Little-endian
+    # EQUIP_HELMET # 2 Bytes Little-endian
+    # EQUIP_SHOES # 2 Bytes Little-endian
+    # EQUIP_JEWELRY # 2 Bytes Little-endian
 
-    # ITEM_1
-    # ITEM_2
+    # ITEM_1 # 2 Bytes Little-endian
+    # ITEM_2 # 2 Bytes Little-endian
     # ...
-    # ITEM_16
+    # ITEM_16 # 2 Bytes Little-endian
 
 # Misc save file data locations
-MONEY = 0x1B0 # 4 Bytes, Little-endian
-LINEUP = 0x1A8 # Where the lineup value is stored
-DISK = 0x1A9 # 1 or 2
+MONEY   = 0x1B0 # 4 Bytes, Little-endian
+LINEUP  = 0x1A8 # Where the lineup value is stored
+DISK    = 0x1A9 # 1 or 2
 
 # Characters in the party
 # Changing these values DOES NOT change portraits
+# TODO Find where the portraits are saved!!!
 PARTY_CHAR_1 = 0x1AC
 PARTY_CHAR_2 = 0x1AD
 PARTY_CHAR_3 = 0x1AE

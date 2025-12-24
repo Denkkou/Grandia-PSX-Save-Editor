@@ -4,8 +4,6 @@ memcard = MemoryCard()
 
 memcard.load_file("saves_unordered.srm")
 
-#memcard.dump_data()
-
 memcard.extract_saves()
 
 
@@ -13,10 +11,31 @@ memcard.extract_saves()
 
 # by setting a current character, the UI can reuse the same code to populate
 # its fields whenever we select someone else
-current_character = Character.SUE
+curr_char = Character.JUSTIN
 
-memcard.saves[0].set_level(current_character, 50)
-print(memcard.saves[0].get_level(current_character.SUE))
+print(memcard.saves[0].get_character_value(curr_char.value, Offsets.LEVEL.value, 1))
+# Expect 10
 
-memcard.saves[0].set_money(2570)
-print(memcard.saves[0].get_money())
+print(memcard.saves[0].get_character_value(curr_char.value, Offsets.TOTAL_XP.value, 4, 'little'))
+# Expect 4387
+
+memcard.saves[0].set_character_value(
+    curr_char.value, 
+    Offsets.TOTAL_XP.value, 
+    5555, 
+    4, 
+    'little'
+)
+print(memcard.saves[0].get_character_value(
+    curr_char.value, 
+    Offsets.TOTAL_XP.value, 
+    4, 'little'
+    )
+)
+# Expect 5555
+
+memcard.saves[0].set_savefile_value(MONEY, 99999, 4, 'little')
+print(memcard.saves[0].get_savefile_value(MONEY, 4, 'little'))
+# Expect 99999
+
+#memcard.dump_data(0)

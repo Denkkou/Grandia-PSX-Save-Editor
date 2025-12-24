@@ -63,12 +63,12 @@ class Offsets(Enum):
     WIND_LVL    = 0x2E  # 1 Byte
     EARTH_LVL   = 0x2F  # 1 Byte
 
-    # EQUIP_WEAPON # 2 Bytes Little-endian
-    # EQUIP_SHIELD # 2 Bytes Little-endian
-    # EQUIP_ARMOUR # 2 Bytes Little-endian
-    # EQUIP_HELMET # 2 Bytes Little-endian
-    # EQUIP_SHOES # 2 Bytes Little-endian
-    # EQUIP_JEWELRY # 2 Bytes Little-endian
+    # WEAPON # 2 Bytes Little-endian
+    # SHIELD # 2 Bytes Little-endian
+    # ARMOUR # 2 Bytes Little-endian
+    # HELMET # 2 Bytes Little-endian
+    # SHOES # 2 Bytes Little-endian
+    # JEWELRY # 2 Bytes Little-endian
 
     # ITEM_1 # 2 Bytes Little-endian
     # ITEM_2 # 2 Bytes Little-endian

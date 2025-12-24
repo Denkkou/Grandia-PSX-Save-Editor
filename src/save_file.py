@@ -20,12 +20,12 @@ class SaveFile:
     #### Character specific values ####
 
     def get_character_value(self, character, offset, size, order='little'):
-        target = character + offset
+        target = character.value + offset.value
         return int.from_bytes(self.data[target:target + size], order)
 
     def set_character_value(self, character, offset, value, size, order='little'):
         bytes_to_set = value.to_bytes(size, order)
-        target = character + offset
+        target = character.value + offset.value
         place = 0
         for b in bytes_to_set:
             self.data[target + place] = b

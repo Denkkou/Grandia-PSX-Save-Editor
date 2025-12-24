@@ -29,7 +29,7 @@ class Lineup(Enum):
     JRL     = 0x10
 
 # Relative offsets from start of character's data block
-class Offsets(Enum):
+class Offset(Enum):
     LEVEL       = 0x03  # 1 Byte
     TOTAL_XP    = 0x34  # 4 Bytes Little-endian
     NEXT_XP     = 0x08  # 2 Bytes Little-endian

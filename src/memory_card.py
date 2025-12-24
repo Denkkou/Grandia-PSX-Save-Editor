@@ -19,7 +19,7 @@ class MemoryCard:
 
     def load_file(self, filepath):
         file = open(filepath, "rb")
-        self.data = file.read(self.data_size)
+        self.data = bytearray(file.read(self.data_size))
         file.close()
 
 
@@ -55,7 +55,7 @@ class MemoryCard:
             else:
                 self.saves.append(None)
     
-    
+
     # This function will modify its self.data field
     # by patching in the reassembled outputs of each
     # save file in self.saves, by calling their reassemble_ functions

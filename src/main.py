@@ -1,41 +1,34 @@
 from memory_card import *
 
 memcard = MemoryCard()
-
 memcard.load_file("saves_unordered.srm")
-
 memcard.extract_saves()
 
 
-# Testing
+#### Testing ####
+
+def test_getters():
+    money = memcard.saves[0].get_savefile_value(MONEY, 4)
+
+    if money == 13030:
+        print("Money value correct!")
+
+    level = memcard.saves[0].get_character_value(c, Offset.LEVEL, 1, 'big')
+    xp_next = memcard.saves[0].get_character_value(c, Offset.NEXT_XP, 2)
+    total_xp = memcard.saves[0].get_character_value(c, Offset.TOTAL_XP, 4)
+
+    if level == 10 and xp_next == 1385 and total_xp == 4387:
+        print("Level and XP values correct!")
+
+    str = memcard.saves[0].get_character_value(c, Offset.STR, 1, 'big')
+    vit = memcard.saves[0].get_character_value(c, Offset.VIT, 1, 'big')
+    wit = memcard.saves[0].get_character_value(c, Offset.WIT, 1, 'big')
+    agi = memcard.saves[0].get_character_value(c, Offset.AGI, 1, 'big')
+
+    if str == 50 and vit == 20 and wit == 48 and agi == 26:
+        print("Stat values correct!")
 
 # by setting a current character, the UI can reuse the same code to populate
 # its fields whenever we select someone else
-curr_char = Character.JUSTIN
-
-print(memcard.saves[0].get_character_value(curr_char.value, Offsets.LEVEL.value, 1))
-# Expect 10
-
-print(memcard.saves[0].get_character_value(curr_char.value, Offsets.TOTAL_XP.value, 4, 'little'))
-# Expect 4387
-
-memcard.saves[0].set_character_value(
-    curr_char.value, 
-    Offsets.TOTAL_XP.value, 
-    5555, 
-    4, 
-    'little'
-)
-print(memcard.saves[0].get_character_value(
-    curr_char.value, 
-    Offsets.TOTAL_XP.value, 
-    4, 'little'
-    )
-)
-# Expect 5555
-
-memcard.saves[0].set_savefile_value(MONEY, 99999, 4, 'little')
-print(memcard.saves[0].get_savefile_value(MONEY, 4, 'little'))
-# Expect 99999
-
-#memcard.dump_data(0)
+c = Character.JUSTIN
+test_getters()

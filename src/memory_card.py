@@ -65,9 +65,9 @@ class MemoryCard:
 
 
     # Print entire save file's raw data to console as hex
-    def dump_data(self):
+    def dump_data(self, save):
         counter = 0
-        for byte in self.data:
+        for byte in self.saves[save].data:
             counter += 1
             if counter < 16:
                 if counter == 9: print(" ", end = "")

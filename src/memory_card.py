@@ -55,6 +55,7 @@ class MemoryCard:
             else:
                 self.saves.append(None)
     
+    
     # This function will modify its self.data field
     # by patching in the reassembled outputs of each
     # save file in self.saves, by calling their reassemble_ functions
@@ -62,6 +63,8 @@ class MemoryCard:
         # ...
         return self.data
 
+
+    # Print entire save file's raw data to console as hex
     def dump_data(self):
         counter = 0
         for byte in self.data:

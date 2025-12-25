@@ -8,8 +8,8 @@ class Character(Enum):
     SUE     = 0x410 #03
     GADWIN  = 0x490 #04
     RAPP    = 0x510 #05
-    #6      = 0x590 #06
-    #7      = 0x610 #07
+    MILDA   = 0x590 #06
+    GUIDO   = 0x610 #07
     LIETE   = 0x690 #08
 
 # Character overworld groups are hard-coded combinations
@@ -63,12 +63,12 @@ class Offset(Enum):
     WIND_LVL    = 0x2E  # 1 Byte
     EARTH_LVL   = 0x2F  # 1 Byte
 
-    # WEAPON # 2 Bytes Little-endian
-    # SHIELD # 2 Bytes Little-endian
-    # ARMOUR # 2 Bytes Little-endian
-    # HELMET # 2 Bytes Little-endian
-    # SHOES # 2 Bytes Little-endian
-    # JEWELRY # 2 Bytes Little-endian
+    WEAPON      = 0x4C  # 2 Bytes Little-endian
+    SHIELD      = 0x4E  # 2 Bytes Little-endian
+    ARMOUR      = 0x50  # 2 Bytes Little-endian
+    HELMET      = 0x52  # 2 Bytes Little-endian
+    SHOES       = 0x54  # 2 Bytes Little-endian
+    JEWELRY     = 0x56  # 2 Bytes Little-endian
 
     # ITEM_1 # 2 Bytes Little-endian
     # ITEM_2 # 2 Bytes Little-endian
@@ -79,6 +79,8 @@ class Offset(Enum):
 MONEY   = 0x1B0 # 4 Bytes, Little-endian
 LINEUP  = 0x1A8 # Where the lineup value is stored
 DISK    = 0x1A9 # 1 or 2
+# PLAYTIME = ??? # ? Bytes, ?-endian, Time in frames (f / 30 = seconds)
+# SAVE_TEXT = 0x154 # 30 Bytes, ASCII
 
 # Characters in the party
 # Changing these values DOES NOT change portraits

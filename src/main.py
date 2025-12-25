@@ -4,6 +4,10 @@ memcard = MemoryCard()
 memcard.load_file("saves_unordered.srm")
 memcard.extract_saves()
 
+#### Window ####
+
+
+
 
 #### Testing ####
 
@@ -32,3 +36,10 @@ def test_getters():
 # its fields whenever we select someone else
 c = Character.JUSTIN
 test_getters()
+
+### NOTES ###
+# Refresh function that gets and populates all the fields.
+# (For each save in saves, for each character in characters?? (01 to 08?))
+
+# Export changes button on each tab (within save tab but outside 
+# of character tab, near file browser button).

@@ -60,6 +60,8 @@ class MemoryCard:
     # by patching in the reassembled outputs of each
     # save file in self.saves, by calling their reassemble_ functions
     def reassemble_memory_card(self):
+        # Note: Will also need to pad out the end of the file with FF
+        # values up to the correct size.
         # ...
         return self.data
 
